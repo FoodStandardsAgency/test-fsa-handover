@@ -1,0 +1,17 @@
+name: pull_requests to master trigger something
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  echo-secrets:
+    name: "echo some secrets"
+    runs-on: ubuntu-latest
+    env:
+      SECRET1: ${{ secrets.SECRET1 }}
+
+    steps:
+    - name: echo secrets
+      run: echo ${{ SECRET1 }}
